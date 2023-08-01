@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.birunthaban.model.AuthenticationRequest;
 import com.birunthaban.model.AuthenticationResponse;
 import com.birunthaban.model.RegisterRequest;
-import com.birunthaban.model.Role;
+import com.birunthaban.enumerate.Role;
 import com.birunthaban.model.Token;
 import com.birunthaban.model.TokenType;
 import com.birunthaban.model.User;
