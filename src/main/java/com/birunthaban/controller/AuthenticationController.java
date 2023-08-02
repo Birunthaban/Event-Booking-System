@@ -20,17 +20,31 @@ public class AuthenticationController {
 
   private final AuthenticationService service;
 
-  @PostMapping("/register")
-  public ResponseEntity<AuthenticationResponse> register(
+  @PostMapping("/customer_signup")
+  public ResponseEntity<AuthenticationResponse> signUpCustomer(
       @RequestBody RegisterRequest request
   ) {
-    return ResponseEntity.ok(service.register(request));
+    return ResponseEntity.ok(service.signUpCustomer(request));
   }
-  @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponse> authenticate(
+  @PostMapping("/owner_signup")
+  public ResponseEntity<AuthenticationResponse> signUpOwner(
+          @RequestBody RegisterRequest request
+  ) {
+    return ResponseEntity.ok(service.signUpOwner(request));
+  }
+  @PostMapping("/customer_signup")
+  public ResponseEntity<AuthenticationResponse> signUpAdmin(
+          @RequestBody RegisterRequest request
+  ) {
+    return ResponseEntity.ok(service.signUpAdmin(request));
+  }
+
+
+  @PostMapping("/sign_in")
+  public ResponseEntity<AuthenticationResponse> signIn(
       @RequestBody AuthenticationRequest request
   ) {
-    return ResponseEntity.ok(service.authenticate(request));
+    return ResponseEntity.ok(service.signIn(request));
   }
 
 
