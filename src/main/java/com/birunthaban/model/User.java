@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.birunthaban.enumerate.Role;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,10 +16,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -29,7 +26,8 @@ import lombok.NoArgsConstructor;
 public class User implements UserDetails {
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@Getter
 	@Id
 	@GeneratedValue
 	private Integer id;

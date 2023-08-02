@@ -2,7 +2,7 @@ package com.birunthaban.enumerate;
 
 public enum Role {
 
-  USER,
+  CUSTOMER,
   OWNER,
   ADMIN
 }
