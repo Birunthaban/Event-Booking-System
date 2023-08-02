@@ -1,5 +1,9 @@
 package com.birunthaban.service;
 
+import com.birunthaban.enumerate.Role;
+
+import com.birunthaban.model.User;
+import com.birunthaban.repository.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,12 +13,17 @@ import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
 public class JwtService {
+  @Autowired
+  UserRepository userRepository;
 
   private static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
 
@@ -37,6 +46,13 @@ public class JwtService {
   )
 
   {
+
+    String userName=userDetails.getUsername();
+    Optional<User> user=userRepository.findByEmail(userName);
+    if (user.isPresent()){
+     extraClaims.put("user_id", user.get().getId());
+    }
+
 
     return Jwts
         .builder()
