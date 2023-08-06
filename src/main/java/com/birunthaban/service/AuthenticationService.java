@@ -1,5 +1,6 @@
 package com.birunthaban.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,10 +21,15 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+	@Autowired
 	private final UserRepository repository;
+
 	private final TokenRepository tokenRepository;
+
 	private final PasswordEncoder passwordEncoder;
+
 	private final JwtService jwtService;
+
 	private final AuthenticationManager authenticationManager;
 
 	public AuthenticationResponse signUpCustomer(RegisterRequest request) {

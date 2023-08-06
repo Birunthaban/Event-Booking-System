@@ -1,7 +1,4 @@
 package com.birunthaban.service;
-
-import com.birunthaban.enumerate.Role;
-
 import com.birunthaban.model.User;
 import com.birunthaban.repository.UserRepository;
 import io.jsonwebtoken.Claims;
