@@ -41,6 +41,16 @@ public class HotelController {
 
         }
 
+    @DeleteMapping("/{hotelId}")
+    public ResponseEntity<Void> deleteHotel(@PathVariable Integer hotelID){
+
+        hotelRepository.deleteById(hotelID);
+
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    //get all
+    // search
 
 
     }
