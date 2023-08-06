@@ -5,6 +5,7 @@ import com.birunthaban.model.User;
 import com.birunthaban.repository.HotelRepository;
 import com.birunthaban.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,10 @@ public class HotelService {
             hotelRepository.save(h);
         }
         return "ok saved";
+    }
+    public void deleteHotel(Integer hotelID){
+         hotelRepository.deleteById(hotelID);
+
     }
 
 

@@ -27,6 +27,8 @@ public class HotelController {
     private HotelRepository hotelRepository;
     @Autowired
     private UserRepository userRepository ;
+    @Autowired
+    private  HotelService hotelService ;
     @PostMapping("/register")
     public ResponseEntity<Void> registerHotel(@RequestBody Hotel hotel){
 
@@ -45,7 +47,8 @@ public class HotelController {
 
     @DeleteMapping("/{hotelId}")
     public ResponseEntity<Void> deleteHotel(@PathVariable Integer hotelID){
-        hotelRepository.deleteById(hotelID);
+
+        hotelService.deleteHotel(hotelID) ;
         return new ResponseEntity<>(HttpStatus.OK);
     }
     //get all
@@ -55,8 +58,12 @@ public class HotelController {
         List<Hotel> hotels = hotelRepository.findAll();
         return new ResponseEntity<List<Hotel>>(hotels,HttpStatus.OK);
     }
-    
-    // search - name related
+
+   @GetMapping("/search")
+   public ResponseEntity<List<Hotel>> searchHotels (){
+       List<Hotel> hotels = hotelRepository.
+
+   }
     // top 10
 
 
