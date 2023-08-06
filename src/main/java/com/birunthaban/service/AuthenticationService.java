@@ -18,6 +18,8 @@ import com.birunthaban.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -33,13 +35,20 @@ public class AuthenticationService {
 	private final AuthenticationManager authenticationManager;
 
 	public AuthenticationResponse signUpCustomer(RegisterRequest request) {
-		var user = User.builder().firstname(request.getFirstname()).lastname(request.getLastname())
-				.email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).role(Role.CUSTOMER)
-				.build();
-		var savedUser = repository.save(user);
-		var jwtToken = jwtService.generateToken(user);
-		saveUserToken(savedUser, jwtToken);
-		return AuthenticationResponse.builder().token(jwtToken).build();
+		Optional<User> optionalUser= repository.findByEmail(request.getEmail()) ;
+		if(optionalUser.get().getEmail()==null){
+			var user = User.builder().firstname(request.getFirstname()).lastname(request.getLastname())
+					.email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).role(Role.CUSTOMER)
+					.build();
+			var savedUser = repository.save(user);
+			var jwtToken = jwtService.generateToken(user);
+			saveUserToken(savedUser, jwtToken);
+			return AuthenticationResponse.builder().token(jwtToken).build();
+		}
+		else {
+			throw new RuntimeException("User Already Exists");
+		}
+
 	}
 	public AuthenticationResponse signUpAdmin(RegisterRequest request) {
 		var user = User.builder().firstname(request.getFirstname()).lastname(request.getLastname())
