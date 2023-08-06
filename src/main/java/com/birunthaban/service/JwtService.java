@@ -44,13 +44,6 @@ public class JwtService {
 
   {
 
-    String userName=userDetails.getUsername();
-    Optional<User> user=userRepository.findByEmail(userName);
-    if (user.isPresent()){
-     extraClaims.put("user_id", user.get().getId());
-    }
-
-
     return Jwts
         .builder()
         .setClaims(extraClaims)
