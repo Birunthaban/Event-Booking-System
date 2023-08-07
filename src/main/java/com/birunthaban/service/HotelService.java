@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,6 +31,17 @@ public class HotelService {
     }
     public void deleteHotel(Integer hotelID){
          hotelRepository.deleteById(hotelID);
+
+    }
+    public List<Hotel> findAllHotels(){
+        List<Hotel> hotels = hotelRepository.findAll();
+        return hotels ;
+    }
+
+    public List<Hotel> searchHotels(String name){
+        List<Hotel> hotels = hotelRepository.findByNameContainingIgnoreCase(name);
+        return hotels ;
+
 
     }
 

@@ -55,13 +55,14 @@ public class HotelController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Hotel>> getAllHotels (){
-        List<Hotel> hotels = hotelRepository.findAll();
+        List<Hotel> hotels = hotelService.findAllHotels();
         return new ResponseEntity<List<Hotel>>(hotels,HttpStatus.OK);
     }
 
    @GetMapping("/search")
-   public ResponseEntity<List<Hotel>> searchHotels (){
-       List<Hotel> hotels = hotelRepository.
+   public ResponseEntity<List<Hotel>> searchHotels (@RequestParam ("query") String query){
+       List<Hotel> hotels = hotelService.searchHotels(query);
+       return new ResponseEntity<List<Hotel>>(hotels,HttpStatus.OK);
 
    }
     // top 10
