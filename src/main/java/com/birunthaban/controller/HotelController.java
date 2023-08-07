@@ -66,6 +66,12 @@ public class HotelController {
 
    }
     // top 10
+    @GetMapping("/new")
+    public ResponseEntity<List<Hotel>> getLatestHotels (){
+        List<Hotel> hotels = hotelService.getLatestHotels();
+        return new ResponseEntity<List<Hotel>>(hotels,HttpStatus.OK);
+
+    }
 
 
 

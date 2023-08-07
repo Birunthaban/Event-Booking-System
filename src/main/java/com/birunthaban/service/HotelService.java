@@ -44,6 +44,11 @@ public class HotelService {
 
 
     }
+    public List<Hotel> getLatestHotels(){
+        List<Hotel> hotels = hotelRepository.findFirst10ByOrderByCreatedAtDesc();
+        return hotels ;
+
+    }
 
 
 }
