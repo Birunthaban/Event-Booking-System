@@ -1,20 +1,14 @@
 package com.birunthaban.controller;
 
 import com.birunthaban.model.Hall;
-import com.birunthaban.model.Hotel;
-import com.birunthaban.model.User;
-import com.birunthaban.repository.UserRepository;
 import com.birunthaban.service.HallService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/hall")
@@ -35,8 +29,8 @@ public class HallController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Hotel>> getAllHotels (){
+    public ResponseEntity<List<Hall>> getAllHalls (){
         List<Hall> halls = hallService.findAllHalls();
-        return new ResponseEntity<List<Hotel>>(halls,HttpStatus.OK);
+        return new ResponseEntity<List<Hall>> (halls,HttpStatus.OK);
     }
 }
