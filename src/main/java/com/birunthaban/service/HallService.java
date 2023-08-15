@@ -6,9 +6,10 @@ import com.birunthaban.repository.HallRepository;
 import com.birunthaban.repository.HotelRepository;
 import com.birunthaban.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class HallService {
     @Autowired
     UserRepository userRepository ;
