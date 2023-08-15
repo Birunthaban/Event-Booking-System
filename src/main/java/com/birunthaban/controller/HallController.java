@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -21,8 +22,21 @@ import java.util.Optional;
 public class HallController {
     @Autowired
     HallService hallService;
+    @PostMapping("/register")
     public ResponseEntity<Void> registerHall(@RequestBody Hall hall , @PathVariable Integer hotelId){
         hallService.createHall(hall ,hotelId);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @DeleteMapping("/{hallId}")
+    public ResponseEntity<Void> deleteHotel(@PathVariable Integer hallID){
+
+        hallService.deleteHall(hallID) ;
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Hotel>> getAllHotels (){
+        List<Hall> halls = hallService.findAllHalls();
+        return new ResponseEntity<List<Hotel>>(halls,HttpStatus.OK);
     }
 }
