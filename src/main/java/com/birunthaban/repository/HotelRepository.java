@@ -14,5 +14,4 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
     List<Hotel> findByNameContainingIgnoreCase(String substring);
     List<Hotel> findFirst10ByOrderByCreatedAtDesc();
 
-
 }
