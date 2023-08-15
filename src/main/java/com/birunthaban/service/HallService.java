@@ -33,6 +33,9 @@ public class HallService {
         List<Hall> halls = hallRepository.findAll();
         return halls;
     }
+    public Hall getHallById(Integer id) {
+        return hallRepository.findById(id).orElse(null);
+    }
 
 
 

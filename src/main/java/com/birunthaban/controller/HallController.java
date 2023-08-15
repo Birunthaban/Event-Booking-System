@@ -30,7 +30,12 @@ public class HallController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Hall>> getAllHalls (){
+
         List<Hall> halls = hallService.findAllHalls();
         return new ResponseEntity<List<Hall>> (halls,HttpStatus.OK);
+    }
+    @GetMapping("/{id}")
+    public Hall getHallById(@PathVariable Integer id) {
+        return hallService.getHallById(id);
     }
 }
